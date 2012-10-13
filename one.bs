@@ -1,6 +1,6 @@
 var ast = BSParser.matchAll('
 object bl { 
-  private foobar , bar1;
+  private foobar , bar1,bar2;
   private baz = "3";
   private function doIt() { 
     blah

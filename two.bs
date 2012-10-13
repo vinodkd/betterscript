@@ -1,5 +1,8 @@
 var ast = BSParser.matchAll('
 module m1{
+env {
+  type : server
+}
 object bl { 
   private foobar , bar1;
   private baz = "3";

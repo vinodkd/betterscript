@@ -1,10 +1,27 @@
 ometa BSParser {
-  compilationUnit = (module | object):cu
+  compilationUnit = (app | module | object):cu
                                      -> [`compUnit, cu],
-  module          = "module" nqstring:mname "{"  
+  app             = "app" nqstring:appname "{"
+                       env:env
+                       importDecls:imports
+                       mainFn: mainFn
+                    "}"
+                                     -> [`app, appname, env, mainFn],
+  importDecls     = importDecls*: imports
+                                     -> imports,
+  importDecl      = ( "import" | "require" | "define"):impType nqstring:mname
+                                     -> [impType, mname],
+  module          = "module" nqstring:mname "{"
+                       env: env
                        (object | mdecls)+:mbody
-                    "}"              -> [`module, mname, mbody],
+                    "}"              -> [`module, mname, env, mbody],
                     
+  env             = "env" "{" listOf('nvpair', ","):attrs "}"
+                                     -> [`env, attrs],
+                                    
+  nvpair          = nqstring:name ":" nqstring:value
+                                     -> [`attr, name, value],
+  
   object          = "object" nqstring:n "{" odecls:ods "}" 
                                      -> [`object, n, ods],
   mdecls          = mdecl+,
