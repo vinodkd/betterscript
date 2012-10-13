@@ -1,3 +1,3 @@
 var ast = BSParser.matchAll("object bl { private foobar;
-private baz;}","object");
+private baz sas;}","object");
 alert(ast);
