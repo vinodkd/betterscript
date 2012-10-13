@@ -8,7 +8,7 @@ ometa BSParser {
   object          = "object" name:n "{" statements:s "}" 
                                      -> ["object", n, s],
   statements      = statement+,
-  statement       = decl:decl ";"    -> decl,
+  statement       = decl:decl    -> decl,
   decl            = (("private" | "protected" | "public"):vis)* memberDecl:md
                                      -> [vis == undefined? "private" : vis, md],
   
@@ -17,7 +17,7 @@ ometa BSParser {
   methodDecl      = "function" nqstring:mname "()" "{" body:b "}"
                                      -> ["method", mname, b],
   
-  varDecl         = listOf('varInit', ","):vi
+  varDecl         = listOf('varInit', ","):vi ";"
                                      -> ["var", vi],
   varInit         = varname:vn ("=" text:val)?
                                      -> [vn,val],

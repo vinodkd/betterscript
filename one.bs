@@ -4,16 +4,16 @@ object bl {
   private baz = "3";
   private function doIt() { 
     blah
-  };
+  }
 
   protected baz = "3";
   protected function doIt() { 
     blah
-  };
+  }
 
   baz = "3";
   function doIt() { 
     blah
-  };
+  }
 }',"object");
 alert(ast);
