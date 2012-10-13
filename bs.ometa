@@ -1,11 +1,12 @@
 ometa BSParser {
   compilationUnit = object:o -> ["compUnit", o],
   object          = "object" name:n "{" statements:s "}" -> ["object", n, s],
-  statements      = privateDecl:prd                      -> prd,
-  privateDecl     = "private" memberDecl:md ";"          -> ["private", md],
+  statements      = statement+,
+  statement       = privateDecl:prd ";"                  -> prd,
+  privateDecl     = "private" memberDecl:md           -> ["private", md],
   
   memberDecl      = varDecl:v                            -> ["var",v],
-  varDecl         = text:vn                           -> vn,
+  varDecl         = text:vn                             -> vn,
   
   varname         = nqstring:s                           -> s,
   name            = text,
