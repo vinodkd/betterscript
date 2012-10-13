@@ -3,17 +3,17 @@ ometa BSParser {
   object          = "object" name:n "{" statements:s "}" -> ["object", n, s],
   statements      = statement+,
   statement       = privateDecl:prd ";"                  -> prd,
-  privateDecl     = "private" memberDecl:md           -> ["private", md],
+  privateDecl     = "private" memberDecl:md              -> ["private", md],
   
   memberDecl      = varDecl:v                            -> ["var",v],
-  varDecl         = text:vn                             -> vn,
+  varDecl         = varname:vn                           -> vn,
   
   varname         = nqstring:s                           -> s,
   name            = text,
-  text            = spaces (qstring | nqstring):s        -> s,
+  text            = spaces (qstring | nqstring):s    -> s,
   
   //this takes care of comments too. copied from bs-ometa-compiler.txt
   space           = ^space |fromTo('//','\n') | fromTo('/*','*/'), 
   qstring         = fromTo('"','"'),
-  nqstring        = ('_' | '.' | letterOrDigit)+:ls      -> (ls.join(''))
+  nqstring        = spaces ('_' | '.' | letterOrDigit)+:ls  -> (ls.join(''))  // fix this later: uses spaces in front
 }
