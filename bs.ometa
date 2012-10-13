@@ -1,27 +1,34 @@
 ometa BSParser {
-  compilationUnit = object:o -> ["compUnit", o],
-  object          = "object" name:n "{" statements:s "}" -> ["object", n, s],
+  compilationUnit = object:o         -> ["compUnit", o],
+  object          = "object" name:n "{" statements:s "}" 
+                                     -> ["object", n, s],
   statements      = statement+,
-  statement       = privateDecl:prd ";"                  -> prd,
-  privateDecl     = "private" memberDecl:md              -> ["private", md],
+  statement       = decl:decl ";"    -> decl,
+  decl            = (("private" | "protected" | "public"):vis)* memberDecl:md
+                                     -> [vis == undefined? "private" : vis, md],
   
-  memberDecl      = (methodDecl | varDecl):md            -> md,
+  memberDecl      = (methodDecl | varDecl):md
+                                     -> md,
   methodDecl      = "function" nqstring:mname "()" "{" body:b "}"
-                                                         -> ["method", mname, b],
+                                     -> ["method", mname, b],
   
-  varDecl         = listOf('varInit', ","):vi            -> ["var", vi],
-  varInit         = varname:vn ("=" text:val)?           -> [vn,val],
-  body            = text:b                               -> b,
+  varDecl         = listOf('varInit', ","):vi
+                                     -> ["var", vi],
+  varInit         = varname:vn ("=" text:val)?
+                                     -> [vn,val],
+  body            = text:b           -> b,
   
-  varname         = nqstring:s                           -> s,
+  varname         = nqstring:s       -> s,
 
   name            = text,
-  text            = spaces (qstring | nqstring):s        -> s,
+  text            = spaces (qstring | nqstring):s
+                                     -> s,
   
   //this takes care of comments too. copied from bs-ometa-compiler.txt
   space           = ^space |fromTo('//','\n') | fromTo('/*','*/'), 
   qstring         = fromTo('"','"'),
   // fix this later: uses spaces in front
-  nqstring        = spaces ('_' | '.' | letterOrDigit)+:ls  -> (ls.join(''))  
+  nqstring        = spaces ('_' | '.' | letterOrDigit)+:ls
   
+                                     -> (ls.join(''))  
 }
