@@ -18,8 +18,17 @@ object bl {
   }
 }
 
+private function f1() {
+  baz
+}
+
 public function f2() {
   baz
 }
+
+function f3() {
+  baz
+}
+
 }',"compilationUnit");
 alert(ast);

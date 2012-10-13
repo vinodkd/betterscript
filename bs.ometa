@@ -1,15 +1,17 @@
 ometa BSParser {
   compilationUnit = (module | object):cu
-                                    -> [`compUnit, cu],
+                                     -> [`compUnit, cu],
   module          = "module" nqstring:mname "{"  
-                       (object | statements)+:mbody
-                    "}"             -> [`module, mname, mbody],
+                       (object | mdecls)+:mbody
+                    "}"              -> [`module, mname, mbody],
                     
-  object          = "object" name:n "{" statements:s "}" 
-                                     -> [`object, n, s],
-  statements      = statement+,
-  statement       = decl:decl    -> decl,
-  decl            = (("private" | "protected" | "public"):vis)* memberDecl:md
+  object          = "object" nqstring:n "{" odecls:ods "}" 
+                                     -> [`object, n, ods],
+  mdecls          = mdecl+,
+  mdecl           = (("private" | "public"):vis)* memberDecl:md
+                                     -> [vis == undefined? `public : vis, md],
+  odecls          = odecl+,
+  odecl           = (("private" | "protected" | "public"):vis)* memberDecl:md
                                      -> [vis == undefined? `private : vis, md],
   
   memberDecl      = (methodDecl | varDecl):md

@@ -28,6 +28,7 @@ Syntax
 ------
 
 ### Objects
+Objects have private, protected and public members; private is the default.
 
     object obj {
       private foo = 1;
@@ -54,6 +55,7 @@ Syntax
 
 ### Modules
 
+Modules have private and public members and public is the default.
 The module def creates the commonJS def and the `package.json`.
 
     module m1 {
