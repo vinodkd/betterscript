@@ -5,8 +5,8 @@ ometa BSParser {
   statement       = privateDecl:prd ";"                  -> prd,
   privateDecl     = "private" memberDecl:md              -> ["private", md],
   
-  memberDecl      = varDecl:v                            -> ["var",v],
-  varDecl         = varname:vn                           -> vn,
+  memberDecl      = varDecl:v                            -> v,
+  varDecl         = listOf('varname', ","):vn            -> ["var", vn],
   
   varname         = nqstring:s                           -> s,
   name            = text,
