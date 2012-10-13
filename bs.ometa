@@ -6,11 +6,13 @@ ometa BSParser {
   privateDecl     = "private" memberDecl:md              -> ["private", md],
   
   memberDecl      = varDecl:v                            -> v,
-  varDecl         = listOf('varname', ","):vn            -> ["var", vn],
+  varDecl         = listOf('varInit', ","):vi            -> ["var", vi],
   
+  varInit         = varname:vn ("=" text:val)?           -> [vn,val],
   varname         = nqstring:s                           -> s,
+
   name            = text,
-  text            = spaces (qstring | nqstring):s    -> s,
+  text            = spaces (qstring | nqstring):s        -> s,
   
   //this takes care of comments too. copied from bs-ometa-compiler.txt
   space           = ^space |fromTo('//','\n') | fromTo('/*','*/'), 
