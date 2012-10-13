@@ -7,15 +7,17 @@ ometa BSParser {
                        mainFn: mainFn
                     "}"
                                      -> [`app,appname,env,imports,mainFn],
-  importDecls     = importDecls*: imports
-                                     -> imports,
-  importDecl      = ( "import" | "require" | "define"):impType nqstring:mname
+  importDecls     = importDecl*: imports
+                                     -> [`imports, imports],
+  importDecl      = ( "import" | "require" | "define"):impType nqstring:mname ";"
                                      -> [impType, mname],
                                     
+  mainFn          = methodDecl,
   module          = "module" nqstring:mname "{"
                        env: env
+                       importDecls:imports
                        (object | mdecls)+:mbody
-                    "}"              -> [`module, mname, env, mbody],
+                    "}"              -> [`module, mname, env, imports, mbody],
                     
   env             = "env" "{" listOf('nvpair', ","):attrs "}"
                                      -> [`env, attrs],

@@ -1,0 +1,14 @@
+var ast = BSParser.matchAll('
+app app1{
+env {
+  type : server
+}
+import foomodule;
+import barmodule;
+
+function main() {
+  baz
+}
+
+}',"compilationUnit");
+alert(ast);
