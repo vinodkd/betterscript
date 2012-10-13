@@ -12,11 +12,10 @@ Basic Goals
 -----------
 
 - Javascript is valid Betterscript by default
-- A simpler syntax for the definition and use of:
--- objects 
--- modules
--- apps
--- the environment
+- A simpler syntax for the definition and use of objects 
+- A simpler syntax for the definition and use of  modules
+- A simpler syntax for the definition and use of  apps
+- A simpler syntax for the definition and use of  the environment
 
 Stretch Goals
 -------------
