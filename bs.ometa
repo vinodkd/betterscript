@@ -1,5 +1,10 @@
 ometa BSParser {
-  compilationUnit = object:o         -> ["compUnit", o],
+  compilationUnit = (module | object):cu
+                                    -> ["compUnit", cu],
+  module          = "module" nqstring:mname "{"  
+                       (object | statements)+:mbody
+                    "}"             -> [`module, mname, mbody],
+                    
   object          = "object" name:n "{" statements:s "}" 
                                      -> ["object", n, s],
   statements      = statement+,
