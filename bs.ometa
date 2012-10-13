@@ -1,6 +1,8 @@
 ometa BSParser {
   compilationUnit = (app | module | object):cu
                                      -> [`compUnit, cu],
+
+  // todo: the order of components is currently fixed. change that.
   app             = "app" nqstring:appname "{"
                        env:env
                        importDecls:imports

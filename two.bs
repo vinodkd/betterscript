@@ -3,6 +3,10 @@ module m1{
 env {
   type : server
 }
+
+import m1;
+import m2.m3;
+
 object bl { 
   private foobar , bar1;
   private baz = "3";
