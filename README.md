@@ -27,46 +27,46 @@ Syntax
 ------
 ### Objects
 
-object obj {
-  private foo = 1;
-  protected bar = "blah";
-
-  public baz = "bleh";
-  var baz2 = "bazz";  // private is default
-
-  function doSomethingPrivate(){
+    object obj {
+      private foo = 1;
+      protected bar = "blah";
     
-  }
-
-  public function doSomethingPublic(){
-  }
-};
+      public baz = "bleh";
+      var baz2 = "bazz";  // private is default
+    
+      function doSomethingPrivate(){
+        
+      }
+    
+      public function doSomethingPublic(){
+      }
+    };
 
 ### Inheritance
 
-object obj2 extends obj {
-  
-};
+    object obj2 extends obj {
+      
+    };
 
 ### Properties
 
 ### Modules
 the module def creates the commonJS def
-module m1 {
-  //private by default
-  function priv()
-  public function blah(){
-    // code here
-  }
-};
+    module m1 {
+      //private by default
+      function priv()
+      public function blah(){
+        // code here
+      }
+    };
 
 ### Environments
 
-env {
-  type: ui | server;
-}
+    env {
+      type: ui | server;
+    }
 
 ### Apps
-app app1 {
-  env: {}
-}
+    app app1 {
+      env: {}
+    }
