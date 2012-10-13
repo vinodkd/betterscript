@@ -1,24 +1,24 @@
 ometa BSParser {
   compilationUnit = (module | object):cu
-                                    -> ["compUnit", cu],
+                                    -> [`compUnit, cu],
   module          = "module" nqstring:mname "{"  
                        (object | statements)+:mbody
                     "}"             -> [`module, mname, mbody],
                     
   object          = "object" name:n "{" statements:s "}" 
-                                     -> ["object", n, s],
+                                     -> [`object, n, s],
   statements      = statement+,
   statement       = decl:decl    -> decl,
   decl            = (("private" | "protected" | "public"):vis)* memberDecl:md
-                                     -> [vis == undefined? "private" : vis, md],
+                                     -> [vis == undefined? `private : vis, md],
   
   memberDecl      = (methodDecl | varDecl):md
                                      -> md,
   methodDecl      = "function" nqstring:mname "()" "{" body:b "}"
-                                     -> ["method", mname, b],
+                                     -> [`method, mname, b],
   
   varDecl         = listOf('varInit', ","):vi ";"
-                                     -> ["var", vi],
+                                     -> [`var, vi],
   varInit         = varname:vn ("=" text:val)?
                                      -> [vn,val],
   body            = text:b           -> b,
