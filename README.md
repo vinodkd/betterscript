@@ -4,26 +4,26 @@ Betterscript : a better Javascript
 The idea
 --------
 
-# A Javascript-based language in the line of Coffeescript and Typescript, but closer to Javascript that both
-# Provide syntactic sugar for the common boiler plate code that arises in JS without any dependencies
-# JS++, but Coffeescript--, ts--
+- A Javascript-based language in the line of Coffeescript and Typescript, but closer to Javascript that both
+- Provide syntactic sugar for the common boiler plate code that arises in JS without any dependencies
+- JS++, but Coffeescript--, ts--
 
 Basic Goals
 -----------
 
-# Javascript is valid Betterscript by default
-# A simpler syntax for the definition and use of:
-## objects 
-## modules
-## apps
-## the environment
+- Javascript is valid Betterscript by default
+- A simpler syntax for the definition and use of:
+-- objects 
+-- modules
+-- apps
+-- the environment
 
 Stretch Goals
 -------------
 
-# Support outside-in dev using hoisting
-# Look at JS:TGP for more things to simplify and add them
-# A nice defer/wait syntax by default
+- Support outside-in dev using hoisting
+- Look at JS:TGP for more things to simplify and add them
+- A nice defer/wait syntax by default
 
 Syntax
 ------
