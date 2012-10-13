@@ -15,5 +15,5 @@ object bl {
   function doIt() { 
     blah
   }
-}',"object");
+}',"compilationUnit");
 alert(ast);
