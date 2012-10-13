@@ -1,0 +1,33 @@
+object shape {
+  private x,y;
+  
+  create(){
+    x = 10;     // x can be used without this
+    this.y = 10;  // ...or with.
+  }
+  
+  public draw(){
+  // draw code here
+  log("x=" + x + ", y=" + y);
+  }
+};
+
+var s = shape();
+s.draw();
+
+object box < shape {
+  var desc = "";
+  
+  create(var desc){
+    this.desc = desc;
+  }
+  public draw(){
+    // override draw here
+  }
+};
+
+var b = box();
+b.draw();
+
+object rect < shape {};
+object ellipse < shape {};

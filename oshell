@@ -1,0 +1,2 @@
+node ometa-rhino.js $@ 
+

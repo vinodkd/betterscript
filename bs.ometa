@@ -1,0 +1,14 @@
+ometa BSParser {
+  compilationUnit = object:o -> ["compUnit", o],
+  object = "object" name:n "{" statements:s "}" -> ["object", n, s],
+  statements = text:s -> s,
+  
+  name = text,
+  text = spaces (qstring | nqstring):s                    ->s,
+  
+  //this takes care of comments too. copied from bs-ometa-compiler.txt
+  space = ^space |fromTo('//','\n') | fromTo('/*','*/'), 
+  
+  qstring = fromTo('"','"'),
+  nqstring = ('_' | '.' | letterOrDigit)+:ls              -> (ls.join(''))
+}
