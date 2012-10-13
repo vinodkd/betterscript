@@ -35,13 +35,14 @@ matchFailed = function (grammar, errorPos) {
 alert = print
 
 translateCode = function(s) {
-  var translationError = function(m, i) { alert("Translation error - please tell Alex about this!"); throw fail },
-      tree             = BSOMetaJSParser.matchAll(s, "topLevel", undefined, matchFailed)
-  return BSOMetaJSTranslator.match(tree, "trans", undefined, translationError)
+  tree = BSOMetaJSParser.matchAll(s, "topLevel", undefined, matchFailed)
+  return BSOMetaJSTranslator.match(tree, "trans", undefined, matchFailed)
 }
 var grammar = readFile(arguments[0]);
 var pgm     = readFile(arguments[1]);
 
 var compUnit = grammar + "\n" + pgm;
-eval(translateCode(compUnit));
+var compiledUnit = translateCode(compUnit);
+//print(compiledUnit);
+eval(compiledUnit);
 
