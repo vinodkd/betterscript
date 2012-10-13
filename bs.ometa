@@ -5,10 +5,14 @@ ometa BSParser {
   statement       = privateDecl:prd ";"                  -> prd,
   privateDecl     = "private" memberDecl:md              -> ["private", md],
   
-  memberDecl      = varDecl:v                            -> v,
-  varDecl         = listOf('varInit', ","):vi            -> ["var", vi],
+  memberDecl      = (methodDecl | varDecl):md            -> md,
+  methodDecl      = "function" nqstring:mname "()" "{" body:b "}"
+                                                         -> ["method", mname, b],
   
+  varDecl         = listOf('varInit', ","):vi            -> ["var", vi],
   varInit         = varname:vn ("=" text:val)?           -> [vn,val],
+  body            = text:b                               -> b,
+  
   varname         = nqstring:s                           -> s,
 
   name            = text,
@@ -17,5 +21,7 @@ ometa BSParser {
   //this takes care of comments too. copied from bs-ometa-compiler.txt
   space           = ^space |fromTo('//','\n') | fromTo('/*','*/'), 
   qstring         = fromTo('"','"'),
-  nqstring        = spaces ('_' | '.' | letterOrDigit)+:ls  -> (ls.join(''))  // fix this later: uses spaces in front
+  // fix this later: uses spaces in front
+  nqstring        = spaces ('_' | '.' | letterOrDigit)+:ls  -> (ls.join(''))  
+  
 }
