@@ -1,4 +1,5 @@
 var ast = BSParser.matchAll('
+module m1{
 object bl { 
   private foobar , bar1;
   private baz = "3";
@@ -15,5 +16,10 @@ object bl {
   function doIt() { 
     blah
   };
-}',"object");
+}
+
+public function f2() {
+  baz
+};
+}',"module");
 alert(ast);
