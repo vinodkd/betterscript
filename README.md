@@ -10,6 +10,7 @@ The idea
 
 Basic Goals
 -----------
+
 # Javascript is valid Betterscript by default
 # A simpler syntax for the definition and use of:
 ## objects 
@@ -19,12 +20,14 @@ Basic Goals
 
 Stretch Goals
 -------------
+
 # Support outside-in dev using hoisting
 # Look at JS:TGP for more things to simplify and add them
 # A nice defer/wait syntax by default
 
 Syntax
 ------
+
 ### Objects
 
     object obj {
@@ -51,7 +54,9 @@ Syntax
 ### Properties
 
 ### Modules
-the module def creates the commonJS def
+
+The module def creates the commonJS def and the `package.json`.
+
     module m1 {
       //private by default
       function priv()
@@ -67,6 +72,8 @@ the module def creates the commonJS def
     }
 
 ### Apps
+
     app app1 {
       env: {}
     }
+
