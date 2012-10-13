@@ -39,10 +39,10 @@ translateCode = function(s) {
   return BSOMetaJSTranslator.match(tree, "trans", undefined, matchFailed)
 }
 var grammar = readFile(arguments[0]);
-var pgm     = readFile(arguments[1]);
+var compiler= readFile(arguments[1]);
+var pgm     = readFile(arguments[2]);
 
-var compUnit = grammar + "\n" + pgm;
+var compUnit = grammar + "\n" + compiler + "\n" + pgm;
 var compiledUnit = translateCode(compUnit);
 //print(compiledUnit);
 eval(compiledUnit);
-
