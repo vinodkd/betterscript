@@ -1,4 +1,3 @@
-var ast = BSParser.matchAll('
 module m1{
 env {
   type : server
@@ -37,5 +36,4 @@ function f3() {
   baz
 }
 
-}',"compilationUnit");
-alert(ast);
+}

@@ -42,7 +42,14 @@ var grammar = readFile(arguments[0]);
 var compiler= readFile(arguments[1]);
 var pgm     = readFile(arguments[2]);
 
-var compUnit = grammar + "\n" + compiler + "\n" + pgm;
-var compiledUnit = translateCode(compUnit);
+var langsrc = grammar + "\n" + compiler;
+var langtoolchain = translateCode(langsrc);
+
 //print(compiledUnit);
-eval(compiledUnit);
+eval(langtoolchain);
+var ast = BSParser.matchAll(pgm,"compilationUnit");
+alert(ast);
+alert("ast done. now compiling\n");
+
+var code = BSCompiler.match(ast, "ast");
+alert(code);

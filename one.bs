@@ -1,4 +1,3 @@
-var ast = BSParser.matchAll('
 object bl { 
   private foobar , bar1,bar2;
   private baz = "3";
@@ -15,10 +14,4 @@ object bl {
   function doIt() { 
     blah
   }
-}',"compilationUnit");
-alert(ast);
-
-alert("ast done. now compiling\n");
-
-var code = BSCompiler.match(ast, "ast");
-alert(code);
+}
