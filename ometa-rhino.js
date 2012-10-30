@@ -38,9 +38,9 @@ translateCode = function(s) {
   tree = BSOMetaJSParser.matchAll(s, "topLevel", undefined, matchFailed)
   return BSOMetaJSTranslator.match(tree, "trans", undefined, matchFailed)
 }
-var grammar = readFile(arguments[0]);
-var compiler= readFile(arguments[1]);
-var pgm     = readFile(arguments[2]);
+var grammar  = readFile(arguments[0]);
+var compiler = readFile(arguments[1]);
+var pgm      = readFile(arguments[2]);
 
 var langsrc = grammar + "\n" + compiler;
 var langtoolchain = translateCode(langsrc);
