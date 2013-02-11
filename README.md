@@ -37,6 +37,8 @@ Objects have private, protected and public members; private is the default.
       public baz = "bleh";
       var baz2 = "bazz";  // private is default
     
+      
+      function obj() {}  // c++ convention of using the object's name for the constructor
       function doSomethingPrivate(){
         
       }
