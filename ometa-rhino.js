@@ -1,10 +1,13 @@
-load("/Users/vinodkd/installed/ometa-js/lib.js")
-load("/Users/vinodkd/installed/ometa-js/ometa-base.js")
-load("/Users/vinodkd/installed/ometa-js/parser.js")
-load("/Users/vinodkd/installed/ometa-js/bs-js-compiler.js")
-load("/Users/vinodkd/installed/ometa-js/bs-ometa-compiler.js")
-load("/Users/vinodkd/installed/ometa-js/bs-ometa-optimizer.js")
-load("/Users/vinodkd/installed/ometa-js/bs-ometa-js-compiler.js")
+var ometaloc = arguments[0]
+print(ometaloc)
+
+load(ometaloc + "lib.js")
+load(ometaloc + "ometa-base.js")
+load(ometaloc + "parser.js")
+load(ometaloc + "bs-js-compiler.js")
+load(ometaloc + "bs-ometa-compiler.js")
+load(ometaloc + "bs-ometa-optimizer.js")
+load(ometaloc + "bs-ometa-js-compiler.js")
 
 matchFailed = function (grammar, errorPos) {
   var lines = grammar.input.lst.split('\n');
@@ -38,9 +41,9 @@ translateCode = function(s) {
   tree = BSOMetaJSParser.matchAll(s, "topLevel", undefined, matchFailed)
   return BSOMetaJSTranslator.match(tree, "trans", undefined, matchFailed)
 }
-var grammar  = readFile(arguments[0]);
-var compiler = readFile(arguments[1]);
-var pgm      = readFile(arguments[2]);
+var grammar  = readFile(arguments[1]);
+var compiler = readFile(arguments[2]);
+var pgm      = readFile(arguments[3]);
 
 var langsrc = grammar + "\n" + compiler;
 var langtoolchain = translateCode(langsrc);
