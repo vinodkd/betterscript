@@ -1,5 +1,4 @@
 var ometaloc = arguments[0]
-print(ometaloc)
 
 load(ometaloc + "lib.js")
 load(ometaloc + "ometa-base.js")
