@@ -1,6 +1,6 @@
 todo.txt
 
 x change bs to use ometa from projects/ometa-js, separating the parse and compile steps in the process.
-- delete js.jar and ometa-rhino.js in this folder, and make it just use ometa-js as an external dep
+x delete js.jar and ometa-rhino.js in this folder, and make it just use ometa-js as an external dep
 - reorg the folders so that the test files are in a separate dir, docs are in docs, etc
 - implement more of the compiler so that it can actually be used, eg in ed.
