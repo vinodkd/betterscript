@@ -1,0 +1,1 @@
+["compUnit",["object","bl",[["private",["var",[["foobar",null],["bar1",null],["bar2",null]]]],["private",["var",[["baz","\"3\""]]]],["private",["method","doIt","blah"]],["protected",["var",[["baz","\"3\""]]]],["protected",["method","doIt","blah"]],["private",["var",[["baz","\"3\""]]]],["private",["method","doIt","blah"]]]]]
