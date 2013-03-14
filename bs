@@ -1,10 +1,15 @@
-echo betterscript parser/compiler running...
+targetdir="."
 
-if [ $# -ne 2 ]
-then
-	echo "Usage: `basename $0` sourcefile targetfile"
+if [ $# -lt 1 ] ; then
+	echo "Usage: `basename $0` sourcefile [outputdir]"
 	exit -1
+elif [ $# -eq 2 ]; then
+	targetdir=$2
 fi
 
-ometa bs.ometa compilationUnit source $1 > $1.ast
-ometa bsc.ometa ast ast $1.ast > $2
+srcfn=${1##*/}
+srcfile=${srcfn%*.*}
+echo betterscript parser/compiler running...
+
+ometa bs.ometa compilationUnit source $1 > $targetdir/$srcfile.ast
+ometa bsc.ometa ast ast $targetdir/$srcfile.ast > $targetdir/$srcfile.bsc
