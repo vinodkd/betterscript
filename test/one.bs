@@ -1,17 +1,17 @@
-object bl { 
+object bl{ 
   private foobar , bar1,bar2;
   private baz = "3";
   private function doIt() { 
-    blah
+    alert("one");
   }
 
   protected baz = "3";
   protected function doIt() { 
-    blah
+    alert("two");
   }
 
   baz = "3";
   function doIt() { 
-    blah
+    alert("three");
   }
 }

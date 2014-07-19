@@ -1,6 +1,5 @@
 ometa BSCompiler {
   ast        = ['compUnit' object:o]-> o.toString(),
   object     = ['object' anything:oname anything:odecls]
-                            -> ('var ' + oname.toString() + ' =function(spec, my){' + 'return that;
-                            };')
+                            -> ('var ' + oname.toString() + ' =function(spec, my){' + BSJSTranslator.match("trans",odecls) +'};')
 }

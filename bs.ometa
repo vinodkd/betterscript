@@ -45,7 +45,7 @@ ometa BSParser {
                                      -> [`var, vi],
   varInit         = varname:vn ("=" text:val)?
                                      -> [vn,val],
-  body            = text:b           -> b,
+  body            = BSJSParser.srcElems:b           -> b,
   
   varname         = nqstring:s       -> s,
 
